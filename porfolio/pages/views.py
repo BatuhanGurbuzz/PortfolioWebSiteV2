@@ -1,0 +1,28 @@
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView
+from . models import Projects
+
+# Create your views here.
+class IndexViews(TemplateView):
+    template_name = 'index.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        projects = Projects.objects.all()
+        context['projects'] = projects
+
+        return context
+    
+
+def portfolio_list(request, project_id=None):
+    
+    projects = Projects.objects.all()
+
+    project_detail = get_object_or_404(Projects, id=project_id)
+
+    context = {
+        'projects': projects,
+        'projects_id' : project_detail
+    }
+
+    return render(request, 'pages/portfolio-details.html', context)

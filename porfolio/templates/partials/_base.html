@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'partials/_head.html' %}
+<body>
+
+    {% comment %} Nav Start {% endcomment %}
+    {% include 'partials/_nav.html' %}
+    {% comment %} Nav End {% endcomment %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% comment %} Footer Start {% endcomment %}
+    {% include 'partials/_footer.html' %}
+    {% comment %} Footer End {% endcomment %}
